@@ -1,0 +1,28 @@
+//
+// Interface Conta
+//
+//   Sistemas Distribuídos
+//   Escola Politécnica - PUCPR
+//   (C) Prof. Luiz Lima Jr.
+//
+// Compilar com:
+//
+//     tao_idl -Gstl Conta.idl
+//
+// para gerar stub e skeleton.
+//
+
+exception SaldoInsuficiente {};
+
+interface Conta {
+
+    // atributos
+    readonly attribute string id;
+    readonly attribute float saldo;
+
+    // métodos
+    void deposito(in float valor);
+    void saque(in float valor) raises (SaldoInsuficiente);
+    void transfere(in float valor, in Conta dest) raises (SaldoInsuficiente);
+    oneway void shutdown(in string senha);
+};
