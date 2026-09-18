@@ -1,28 +1,26 @@
 //
-// Interface Conta
+// Interface Logger
 //
+//   T1 - Logger
 //   Sistemas Distribuídos
 //   Escola Politécnica - PUCPR
-//   (C) Prof. Luiz Lima Jr.
+//   Prof. Luiz Lima Jr.
+//   Alunos: Davi Natume, Eduardo Teodoro, Lucas Pelanda, Pedro Favero
 //
 // Compilar com:
 //
-//     tao_idl -Gstl Conta.idl
+//     tao_idl -Gstl Logger.idl
 //
 // para gerar stub e skeleton.
 //
 
-exception SaldoInsuficiente {};
+exception NenhumEventoCadastrado {};
 
-interface Conta {
+enum Severidade {DEBUG, WARNING, ERROR, CRITICAL};
 
-    // atributos
-    readonly attribute string id;
-    readonly attribute float saldo;
+interface Logger {
 
     // métodos
-    void deposito(in float valor);
-    void saque(in float valor) raises (SaldoInsuficiente);
-    void transfere(in float valor, in Conta dest) raises (SaldoInsuficiente);
-    oneway void shutdown(in string senha);
+    void log(in Severidade severidade, in string endereco, in short pid, in long hora, in string descricao);
+    string locate(in Severidade s);
 };
