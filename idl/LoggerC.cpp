@@ -255,7 +255,8 @@ Logger::log (
       6,
       "log",
       3,
-      TAO::TAO_CO_NONE | TAO::TAO_CO_THRU_POA_STRATEGY
+      TAO::TAO_CO_NONE | TAO::TAO_CO_THRU_POA_STRATEGY,
+      TAO::TAO_ONEWAY_INVOCATION
       
     );
 
@@ -282,6 +283,18 @@ Logger::locate (
       std::addressof(_tao_s)
     };
 
+  static TAO::Exception_Data
+  _tao_Logger_locate_exceptiondata [] = 
+    {
+      {
+        "IDL:NenhumEventoCadastrado:1.0",
+        NenhumEventoCadastrado::_alloc
+#if TAO_HAS_INTERCEPTORS == 1
+        , _tc_NenhumEventoCadastrado
+#endif /* TAO_HAS_INTERCEPTORS */
+      }
+    };
+
   TAO::Invocation_Adapter _invocation_call (
       this,
       _the_tao_operation_signature,
@@ -292,7 +305,10 @@ Logger::locate (
       
     );
 
-  _invocation_call.invoke (nullptr, 0);
+  _invocation_call.invoke (
+      _tao_Logger_locate_exceptiondata,
+      1
+    );
 
   return _tao_retval.retn ();
 }

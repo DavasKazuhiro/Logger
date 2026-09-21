@@ -25,8 +25,8 @@
 // TAO_IDL - Generated from
 // /opt/ACE_wrappers/TAO/TAO_IDL/be/be_codegen.cpp:631
 
-#ifndef _TAO_IDL_LOGGERS_TPE4HX_CPP_
-#define _TAO_IDL_LOGGERS_TPE4HX_CPP_
+#ifndef _TAO_IDL____IDL_LOGGERS_XP8XPP_CPP_
+#define _TAO_IDL____IDL_LOGGERS_XP8XPP_CPP_
 
 
 #include "LoggerS.h"
@@ -304,7 +304,16 @@ void POA_Logger::locate_skel (
   TAO_ServerRequest & server_request,
   TAO::Portable_Server::Servant_Upcall *TAO_INTERCEPTOR (servant_upcall),
   TAO_ServantBase *servant)
-{TAO::SArg_Traits< std::string>::ret_val retval;
+{
+#if TAO_HAS_INTERCEPTORS == 1
+  static ::CORBA::TypeCode_ptr const exceptions[] = 
+    {
+      _tc_NenhumEventoCadastrado
+    };
+  
+#endif /* TAO_HAS_INTERCEPTORS */
+
+  TAO::SArg_Traits< std::string>::ret_val retval;
   TAO::SArg_Traits< ::Severidade>::in_arg_val _tao_s;
 
   TAO::Argument * const args[] =
@@ -333,8 +342,8 @@ void POA_Logger::locate_skel (
                          , command
 #if TAO_HAS_INTERCEPTORS == 1
                          , servant_upcall
-                         , nullptr
-                         , 0
+                         , exceptions
+                         , 1
 #endif  /* TAO_HAS_INTERCEPTORS == 1 */
                          );
 }

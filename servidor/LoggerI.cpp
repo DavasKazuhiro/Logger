@@ -28,6 +28,22 @@
 #include "LoggerI.h"
 #include <iostream>
 
+const std::string nomeSeveridade(::Severidade severidade)
+{
+  switch (severidade) {
+    case DEBUG:
+      return "DEBUG";
+    case WARNING:
+      return "WARNING";
+    case ERROR:
+      return "ERROR";
+    case CRITICAL:
+      return "CRITICAL";
+    default:
+      return "DESCONHECIDA";
+  }
+}
+
 // Implementation skeleton constructor
 Logger_i::Logger_i () {
 }
@@ -48,7 +64,7 @@ void Logger_i::log (
   logs[severidade].push_back(log);
 
   std::cout << "Novo log registrado: " << std::endl;
-  std::cout << "Severidade: " << severidade << std::endl;
+  std::cout << "Severidade: " << nomeSeveridade(severidade) << std::endl;
   std::cout << "Endereco: " << endereco << std::endl;
   std::cout << "PID: " << pid << std::endl;
   std::cout << "Hora: " << hora << std::endl;
