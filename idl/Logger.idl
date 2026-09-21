@@ -21,6 +21,6 @@ enum Severidade {DEBUG, WARNING, ERROR, CRITICAL};
 interface Logger {
 
     // métodos
-    void log(in Severidade severidade, in string endereco, in short pid, in long hora, in string descricao);
-    string locate(in Severidade s);
+    oneway void log(in Severidade severidade, in string endereco, in short pid, in long hora, in string descricao);
+    string locate(in Severidade s) raises (NenhumEventoCadastrado);
 };

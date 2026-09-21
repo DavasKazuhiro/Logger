@@ -30,7 +30,6 @@
 
 // Implementation skeleton constructor
 Logger_i::Logger_i () {
-  logs
 }
 
 // Implementation skeleton destructor
@@ -57,7 +56,7 @@ void Logger_i::log (
 }
 
 std::string Logger_i::locate (::Severidade s){
-  if logs[s].empty() {
+  if (logs[s].empty()){
     throw NenhumEventoCadastrado();
   }
 

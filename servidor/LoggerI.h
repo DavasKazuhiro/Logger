@@ -52,7 +52,7 @@ class Log {
     ::CORBA::Short getPid() { return pid; }
     ::CORBA::Long getHora() { return hora; }
     std::string getDescricao() { return descricao; }
-}
+};
 
 class  Logger_i
   : public virtual POA_Logger

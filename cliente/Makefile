@@ -8,10 +8,10 @@ include $(ACE_ROOT)/include/makeinclude/platform_macros.GNU
 # Parâmetros:
 #
 
-PROJECT = cliente_conta
+PROJECT = cliente_logger
 SERVER = false
 
-IDL.idl = Conta.idl
+IDL.idl = Logger.idl
 COMMON.cpp =
 SOURCES.cpp = \
 	cliente.cpp
